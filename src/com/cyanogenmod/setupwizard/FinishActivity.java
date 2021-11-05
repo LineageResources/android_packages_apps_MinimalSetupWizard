@@ -76,6 +76,7 @@ public class FinishActivity extends BaseSetupWizardActivity {
         mEnableAccessibilityController =
                 EnableAccessibilityController.getInstance(getApplicationContext());
         setNextText(R.string.start);
+        hideBackButton();
     }
 
     @Override
@@ -109,7 +110,6 @@ public class FinishActivity extends BaseSetupWizardActivity {
 
     private void startFinishSequence() {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-        hideBackButton();
         hideNextButton();
         finishSetup();
     }

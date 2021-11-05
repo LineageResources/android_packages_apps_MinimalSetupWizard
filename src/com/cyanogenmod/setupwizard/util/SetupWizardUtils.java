@@ -55,12 +55,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.cyanogenmod.setupwizard.BluetoothSetupActivity;
-import com.cyanogenmod.setupwizard.ChooseDataSimActivity;
-import com.cyanogenmod.setupwizard.FingerprintActivity;
-import com.cyanogenmod.setupwizard.MobileDataActivity;
 import com.cyanogenmod.setupwizard.SetupWizardApp;
-import com.cyanogenmod.setupwizard.SimMissingActivity;
-import com.cyanogenmod.setupwizard.WifiSetupActivity;
 import com.cyanogenmod.setupwizard.wizardmanager.WizardManager;
 
 import org.cyanogenmod.internal.util.PackageManagerUtils;
@@ -237,24 +232,6 @@ public class SetupWizardUtils {
     public static void disableComponentsForMissingFeatures(Context context) {
         if (!hasLeanback(context)) {
             disableComponent(context, BluetoothSetupActivity.class);
-        }
-        if (!hasFingerprint(context)) {
-            disableComponent(context, FingerprintActivity.class);
-        }
-        if (!hasTelephony(context)) {
-            disableComponent(context, MobileDataActivity.class);
-            disableComponent(context, SimMissingActivity.class);
-            disableComponent(context, ChooseDataSimActivity.class);
-        }
-        if (!SetupWizardUtils.isMultiSimDevice(context)) {
-            disableComponent(context, ChooseDataSimActivity.class);
-        } else if (simMissing()) {
-            disableComponent(context, MobileDataActivity.class);
-            disableComponent(context, ChooseDataSimActivity.class);
-        }
-        if (!SetupWizardUtils.hasWifi(context) ||
-            isEthernetConnected(context)) {
-            disableComponent(context, WifiSetupActivity.class);
         }
 
         // Google's ATV SUW is shipped as it requires platform signature.
